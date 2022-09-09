@@ -10,8 +10,7 @@ class Customer(models.Model):
 
 class Account(models.Model):
     number = models.IntegerField(primary_key=True)
-    balance = models.DecimalField(max_digits=20, decimal_places=2)
+    balance = models.DecimalField(max_digits=20, decimal_places=2, default=0)
     lastChangeDate = models.DateField()
     isActive = models.BooleanField(default=True)
     customer = models.ForeignKey(Customer, related_name='account', on_delete=models.CASCADE)
-
