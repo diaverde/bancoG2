@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Su banco</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="estilos.css" rel="stylesheet">
+    <link href="css/estilos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -13,26 +13,26 @@
     <div class="header">
         <h1>Banco UN</h1>
         <nav>
-            <a href="index.html"><button>Iniciar Sesión</button></a>
-            <button>Registrarse</button>
+            <a href="#"><button>Iniciar Sesión</button></a>
+            <a href="registro.html"><button>Registrarse</button></a>
         </nav>
     </div>
         
-    <div class="signUp_user">
-        <div class="container_signUp_user">
+    <div class="signUp_user" id="info">
+        <div class="container_signUp_user" id="formData">
             <h2>Registrarse</h2>
-            <form v-on:submit.prevent="processSignUp" >
-                <input type="number" name="id" placeholder="Documento">
+            <form name="registro" method="post">
+                <input type="number" name="id" placeholder="Documento" required>
                 <br>
-                <input type="text" name="firstName" placeholder="Nombre">
+                <input type="text" name="firstName" placeholder="Nombre" required>
                 <br>
-                <input type="text" name="lastName" placeholder="Apellido">
+                <input type="text" name="lastName" placeholder="Apellido" required>
                 <br>
-                <input type="email" name="email" placeholder="Email">
+                <input type="email" name="email" placeholder="Correo electrónico" required>
                 <br>
-                <input type="password" name="password" placeholder="Contraseña">
+                <input type="password" name="password" placeholder="Contraseña" required>
                 <br>
-                <button type="submit">Registrarse</button>
+                <input type="submit" value="Registrarse">
             </form>
         </div>
     </div>
@@ -41,5 +41,6 @@
         <h2>Misión TIC 2022</h2>
     </footer>
 
+    <script src="js/registro.js"></script>
 </body>
 </html>

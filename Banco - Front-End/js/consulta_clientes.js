@@ -1,8 +1,11 @@
+const getCustomersUrl = 'https://mintic-bancoproj-g2.herokuapp.com/getAllCustomers';
+//const getCustomersUrl = 'http://127.0.0.1:8000/getAllCustomers';
+
 customers = [];
 
 function getCustomers() {
   // Petición HTTP
-  fetch('https://mintic-banco-unal.herokuapp.com/customers/')
+  fetch(getCustomersUrl)
     .then(response => {
       console.log(response);
       if (response.ok)
