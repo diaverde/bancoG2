@@ -13,6 +13,10 @@ def newCustomer(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
+            customer = Customer.objects.filter(id = data['id']).first()
+            if (customer):
+                return HttpResponseBadRequest("Ya existe cliente con esa cédula.")
+
             customer = Customer(
                 id = data["id"],
                 firstName = data["firstName"],
