@@ -165,3 +165,28 @@ def deleteAccount(request, id):
             return HttpResponseBadRequest("Error en los datos enviados")
     else:
         return HttpResponseNotAllowed(['DELETE'], "Método inválido")
+
+#-----------------
+# Login
+#-----------------
+
+def login(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            email = data['email']
+            password = data['password']
+
+            customer = Customer.objects.filter(email = email, password = password).first()
+            if (not customer):
+                return HttpResponse("Credenciales inválidas.", status=401)
+
+            custData = {"id": customer.id}
+            resp = HttpResponse()
+            resp.headers['Content-Type'] = "text/json"
+            resp.content = json.dumps(custData)
+            return resp
+        except:
+            return HttpResponseBadRequest("Error en los datos enviados")
+    else:
+        return HttpResponseNotAllowed(['POST'], "Método inválido")

@@ -2,7 +2,7 @@ const newCustomerUrl = 'https://mintic-bancoproj-g2.herokuapp.com/newCustomer';
 //const newCustomerUrl = 'http://127.0.0.1:8000/newCustomer';
 
 function validate_names(val) {
-    const letters = /^[A-Z a-z]+$/;
+    const letters = /^[A-Z a-zÁÉÍÓÚáéíóúñ]+$/;
     if (val.match(letters))
         return true;
     else
@@ -87,7 +87,7 @@ function saveCustomer(data) {
         })
         .catch(error => {
             console.error("ERROR: ", error.message);
-            handleError(error.message);
+            handleError();
         });
 }
 
@@ -99,10 +99,10 @@ function handleSuccess() {
     info.appendChild(message);
 }
 
-function handleError(msg) {
+function handleError() {
     document.getElementById("formData").remove();
     const message = document.createElement("p");
-    message.innerText = "No se pudo crear el cliente. Intente luego. " + msg;
+    message.innerText = "No se pudo crear el cliente. Intente luego.";
     const info = document.getElementById("info");
     info.appendChild(message);
 }
