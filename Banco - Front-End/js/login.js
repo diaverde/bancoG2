@@ -13,6 +13,7 @@ function collectData(evt) {
     }
     console.log(customer);
     const dataToSend = JSON.stringify(customer);
+    console.log(dataToSend);
     login(dataToSend);
 }
 
@@ -21,7 +22,7 @@ function login(data) {
     fetch(loginUrl, {
         method: "POST",
         headers: {
-            "Content-Type": "text/json"
+            "Content-Type": "application/json"
         },
         body: data
     })
@@ -51,6 +52,15 @@ function handleSuccess(data) {
     message.innerText = "Ingreso exitoso. Accediendo a su información...";
     const info = document.getElementById("info");
     info.appendChild(message);
+    const token =
+    {
+        refresh: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2Mzg5OTA4OCwiaWF0IjoxNjYzODEyNjg4LCJqdGkiOiI4NmY0OWEwY2M0ODc0MWRiYmRmMGUyY2VhZDQ1NzM1NiIsInVzZXJfaWQiOjQ0NTV9.YLGmEOudUlFOpchSDXZfLhKPvFbV77nxEYb0Nmj-Yqo",
+        access: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYzODEyOTg4LCJpYXQiOjE2NjM4MTI2ODgsImp0aSI6IjEyNTg2NWY4NjNmMzQ1OTFhZmJlMTIwN2QzZjg5YzM2IiwidXNlcl9pZCI6NDQ1NX0.IWnDKseoPz1tHZAWjdSSt-op4yKoRRmSEWNQ2RY4HKw"
+    };
+    console.log(data.access);
+    console.log(data.refresh);
+    sessionStorage.setItem("accessToken", token.access);
+    sessionStorage.setItem("refreshToken", token.refresh);
     window.location.href = './cliente.html?id=' + data.id;
 }
 
