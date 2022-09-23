@@ -22,10 +22,10 @@ class Customer(AbstractBaseUser, PermissionsMixin):
     isAdmin = models.BooleanField(default=False)
 
     def save(self, **kwargs):
-        some_salt = 'mMfUABC123'
-        print(self.password)
+        some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
+        #print(self.password)
         self.password = make_password(self.password, some_salt)
-        print(self.password)
+        #print(self.password)
         super().save(**kwargs)
 
     objects = UserManager()
