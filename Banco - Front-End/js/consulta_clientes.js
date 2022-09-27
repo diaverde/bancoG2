@@ -27,17 +27,27 @@ function getCustomers() {
 function handleCustomers() {
   const divs = [];
   customers.forEach((cust) => {
-    const div = document.createElement("div");
-    div.innerHTML = `
-      <h3>Nombre: ${cust.firstName}</h3>
-      <h3>Apellido: ${cust.lastName}</h3>
-      <h3>Cédula: ${cust.id}</h3>
+    //const div = document.createElement("div");
+    const custData = `
+      <tr><td>${cust.firstName}</td>
+      <td>${cust.lastName}</td>
+      <td>${cust.id}</td></tr>
       `;
-    divs.push(div);
+    divs.push(custData);
   });
   document.getElementById("cargando").remove();
   const info = document.getElementById("info-customers");
-  divs.forEach(div => info.appendChild(div));
+
+  const table = document.createElement("table");
+  table.innerHTML = `
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Cédula</th>
+    </tr>`;
+  //divs.forEach(div => info.appendChild(div));
+  divs.forEach(div => table.innerHTML += div);
+  info.appendChild(table);
 }
 
 function handleError() {

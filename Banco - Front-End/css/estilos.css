@@ -2,6 +2,12 @@ body{
     margin: 0 0 0 0;
 }
 
+table th, td {
+    text-align: center;
+    padding: 8px;
+    background-color: aquamarine;
+}
+
 .header{
     margin: 0%;
     padding: 0;
