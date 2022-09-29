@@ -14,7 +14,7 @@ class UserManager(BaseUserManager):
 
 
 class Customer(AbstractBaseUser, PermissionsMixin):
-    id = models.BigIntegerField(primary_key=True)
+    cedula = models.BigIntegerField(primary_key=True)
     firstName = models.CharField(max_length=50)
     lastName = models.CharField(max_length=50)
     email = models.EmailField(max_length=100, unique=True)
